@@ -59,9 +59,11 @@ dependencies: [
 
 Or in Xcode, go to File > Add Package Dependencies and enter the repository URL.
 
-### Git Submodule
+### Git Submodule (For Package Development Only)
 
-When cloning this repository, make sure to initialize the submodule:
+**Note**: If you're using this package as a dependency in your app via Swift Package Manager, submodules are handled automatically by SPM. The following is only needed if you're developing features for this package itself.
+
+When cloning this repository for development, make sure to initialize the submodule:
 
 ```bash
 git clone --recurse-submodules https://github.com/wendylabsinc/grayskull-swift.git
