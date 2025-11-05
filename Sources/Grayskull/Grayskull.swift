@@ -97,6 +97,10 @@
 /// - Cache-coherent memory access patterns
 /// - Thread-safe with platform-optimized locking
 ///
+/// ## Guides
+///
+/// - <doc:EmbeddedGuide>
+///
 /// ## See Also
 ///
 /// - [Grayskull C Library](https://github.com/zserge/grayskull)
