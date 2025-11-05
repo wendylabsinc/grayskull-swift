@@ -119,6 +119,8 @@ import Darwin
 import Glibc
 #elseif canImport(Musl)
 import Musl
+#elseif os(Windows)
+import WinSDK
 #elseif canImport(ucrt)
 import ucrt
 #endif
@@ -328,8 +330,26 @@ private final class Mutex: @unchecked Sendable {
     func unlock() {
         os_unfair_lock_unlock(&unfairLock)
     }
+    #elseif os(Windows)
+    private var criticalSection = CRITICAL_SECTION()
+
+    init() {
+        InitializeCriticalSection(&criticalSection)
+    }
+
+    deinit {
+        DeleteCriticalSection(&criticalSection)
+    }
+
+    func lock() {
+        EnterCriticalSection(&criticalSection)
+    }
+
+    func unlock() {
+        LeaveCriticalSection(&criticalSection)
+    }
     #else
-    // pthread_mutex for Linux/Windows
+    // pthread_mutex for Linux and other POSIX systems
     private var mutex = pthread_mutex_t()
 
     init() {
