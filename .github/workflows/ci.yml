@@ -13,5 +13,5 @@ jobs:
     with:
       linux_swift_versions: '["6.2"]'
       windows_swift_versions: '["6.2"]'
-      linux_pre_build_command: 'git submodule update --init --recursive'
-      windows_pre_build_command: 'git submodule update --init --recursive'
+      linux_pre_build_command: 'git config --global --add safe.directory "*" && git submodule update --init --recursive'
+      windows_pre_build_command: 'git config --global --add safe.directory "*" && git submodule update --init --recursive'
